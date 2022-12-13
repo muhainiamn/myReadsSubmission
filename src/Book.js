@@ -2,7 +2,6 @@
 import PropTypes from "prop-types";
 
 const Book = ({book , onShelfChange}) => {
-  
     return ( 
     <li>
     <div className="book">
@@ -13,12 +12,12 @@ const Book = ({book , onShelfChange}) => {
           width: 128,
           height: 193,
           backgroundImage:
-            'url("' + book.imageLinks.thumbnail + '")',
+            book.imageLinks ? 'url("' + book.imageLinks.thumbnail + '")' : undefined
         }}
       ></div>
       <div className="book-shelf-changer" >
         <select value={book.shelf  ? book.shelf : 'none'} onChange = {(event) => onShelfChange(event , book) }  >
-          <option value="none" disabled>
+          <option  disabled>
             Move to...
           </option>
           <option value="currentlyReading">
